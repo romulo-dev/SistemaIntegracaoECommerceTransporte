@@ -40,18 +40,25 @@ namespace ECommerceInterno.Services
 
 
         // public async Task<ClienteDto> CreateAsync(ClienteDto dto, string email, string senha)
-        public async Task<ClienteDto> CreateAsync(Cliente cliente)
+        public async Task<ClienteDto> CreateAsyncDTO(Cliente cliente)
         {
             // var c = new Cliente { Nome = dto.Nome, CPF = dto.CPF, Email = email, Senha = senha };
             var c = await _repository.AddAsync(cliente);
             return new ClienteDto(c.Id, c.Nome, c.CPF);
+        }
+        
+        public async Task<Cliente> CreateAsync(Cliente cliente)
+        {
+            // var c = new Cliente { Nome = dto.Nome, CPF = dto.CPF, Email = email, Senha = senha };
+            var c = await _repository.AddAsync(cliente);
+            return c;
         }
 
         public async Task UpdateAsync(int id, ClienteDto dto)
         {
             var c = await _repository.GetByIdAsync(id) ?? throw new KeyNotFoundException("Cliente não encontrado");
             c.Nome = dto.Nome;
-            c.CPF  = dto.CPF;
+            c.CPF = dto.CPF;
             await _repository.UpdateAsync(c);
         }
 
