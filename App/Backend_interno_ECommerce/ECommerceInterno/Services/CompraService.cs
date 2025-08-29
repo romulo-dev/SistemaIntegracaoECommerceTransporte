@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using ECommerceInterno.Data;
 using ECommerceInterno.DTOs;
 using ECommerceInterno.Models;
+using ECommerceInterno.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceInterno.Services
@@ -14,12 +16,21 @@ namespace ECommerceInterno.Services
         private readonly AppDbContext _ctx;
         private readonly ClienteService _cliente;
         private readonly ProdutoService _produto;
+        private readonly CompraRepository _repository;
 
-        public CompraService(AppDbContext ctx, ClienteService cliente, ProdutoService produto)
+        public CompraService(AppDbContext ctx, ClienteService cliente, ProdutoService produto,
+         CompraRepository repository)
         {
             _ctx = ctx;
             _cliente = cliente;
             _produto = produto;
+            _repository = repository;
+        }
+
+        public async Task<Compra?> ObterCompra(int id)
+        {
+            var compra = await _repository.GetByIdAsync(id);
+            return compra is null ? null : compra;
         }
 
         public async Task<Compra> CreateCompra(int clienteId, int produtoId, int quantidadeComprada)
