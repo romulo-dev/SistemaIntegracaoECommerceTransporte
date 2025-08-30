@@ -1,0 +1,21 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userprefs
+# NuGet packages
+packages/
+# Temporary files
+*.tmp
+*.bak
+# Test results
+TestResults/
+# Resharper
+*.DotSettings
+# NCrunch
+_NCrunch_Output/
+# Rider
+.idea/
