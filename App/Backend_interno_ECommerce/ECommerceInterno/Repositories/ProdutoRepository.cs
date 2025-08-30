@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceInterno.Repositories
 {
-    public class ProdutoRepository
+    public class ProdutoRepository : IProdutoRepository
     {
         private readonly AppDbContext _ctx;
         public ProdutoRepository(AppDbContext ctx) => _ctx = ctx;

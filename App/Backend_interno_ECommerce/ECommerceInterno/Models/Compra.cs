@@ -22,6 +22,11 @@ namespace ECommerceInterno.Models
 
         public DateTime DataCompra { get; set; }
 
+        public Compra()
+        {
+            
+        }
+
         public Compra(ClienteDto cliente, Produto produto, int quantidade, decimal valor, DateTime data)
         {
             // ClienteDto = cliente;
