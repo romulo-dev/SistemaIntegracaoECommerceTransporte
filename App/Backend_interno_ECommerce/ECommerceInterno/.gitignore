@@ -19,3 +19,10 @@ TestResults/
 _NCrunch_Output/
 # Rider
 .idea/
+
+bin/Debug/net8.0
+/bin/Debug/net8.0
+bin
+/bin
+obj
+/obj
